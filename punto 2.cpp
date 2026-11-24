@@ -44,11 +44,11 @@ public:
             if (!mesa.estaOcupada() && mesa.getCapacidad() >= comensales) {
                 mesa.ocupar();
                 cout << "Mesa #" << mesa.getNumero() 
-                     << " reservada con éxito para " << comensales << " personas.\n";
+                     << " reservada con éxito para " << comensales << " personas."<<endl;
                 return true;
             }
         }
-        cout << "No hay mesas libres con capacidad suficiente para " << comensales << " personas.\n";
+        cout << "No hay mesas libres con capacidad suficiente para " << comensales << " personas."<<endl;
         return false;
     }
 
@@ -58,15 +58,15 @@ public:
             if (mesa.getNumero() == numeroMesa) {
                 if (mesa.estaOcupada()) {
                     mesa.liberar();
-                    cout << "Mesa #" << numeroMesa << " liberada con éxito.\n";
+                    cout << "Mesa #" << numeroMesa << " liberada con éxito."<<endl;
                     return true;
                 } else {
-                    cout << "La mesa #" << numeroMesa << " ya estaba libre.\n";
+                    cout << "La mesa #" << numeroMesa << " ya estaba libre."<<endl;
                     return false;
                 }
             }
         }
-        cout << "La mesa #" << numeroMesa << " no existe en el restaurante.\n";
+        cout << "La mesa #" << numeroMesa << " no existe en el restaurante."<<endl;
         return false;
     }
 
@@ -83,12 +83,11 @@ public:
 
     
     void mostrarEstado() const {
-        cout << "\n--- ESTADO DEL RESTAURANTE ---\n";
+        cout << "Estado del restaurante"<<endl;
         for (const auto& mesa : mesas) {
             mesa.mostrarInfo();
         }
-        cout << "Total de mesas libres: " << obtenerMesasLibres() << "\n";
-        cout << "------------------------------\n";
+        cout << "Total de mesas libres: " << obtenerMesasLibres() << endl;
     }
 };
 
@@ -104,22 +103,15 @@ int main() {
     
     miRestaurante.mostrarEstado();
 
-    cout << "\n--- REALIZANDO RESERVAS ---\n";
-    miRestaurante.reservarMesa(3); // Debería tomar la Mesa #2
-    miRestaurante.reservarMesa(5); // Debería tomar la Mesa #4
-    miRestaurante.reservarMesa(4); // Debería tomar la Mesa #3
-
-   
-    miRestaurante.mostrarEstado();
-
-    
+    cout << "Realizando reservas";
+    miRestaurante.reservarMesa(3);
+    miRestaurante.reservarMesa(5);
     miRestaurante.reservarMesa(4);
-
-   
-    cout << "\n--- LIBERANDO MESA ---\n";
+    miRestaurante.mostrarEstado();
+    miRestaurante.reservarMesa(4);
+    cout << "Liberando mesa"<<endl;
     miRestaurante.liberarMesa(2);
 
-   
     miRestaurante.mostrarEstado();
 
     return 0;
