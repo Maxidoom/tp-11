@@ -20,7 +20,7 @@ public:
     int getAnio() const { return anio; }
 
     virtual void mostrarInfo() const {
-        cout << "Marca: " << marca << " | Modelo: " << modelo << " | Año: " << anio;
+        cout << "Marca: " << marca << " | Modelo: " << modelo << " | Año: " << año;
     }
 };
 
@@ -38,13 +38,12 @@ public:
     string getTipoCombustible() const { return tipoCombustible; }
 
     void mostrarInfo() const override {
-        cout << "[COCHE] ";
+        cout << "Coche"<<endl;
         Vehiculo::mostrarInfo();
-        cout << " | Puertas: " << numPuertas << " | Combustible: " << tipoCombustible << endl;
+        cout << "Puertas: " << numPuertas <<endl
+        cout << "Combustible: " << tipoCombustible << endl;
     }
 };
-
-
 class Motocicleta : public Vehiculo {
 private:
     int cilindrada; 
@@ -58,9 +57,10 @@ public:
     string getTipoManillar() const { return tipoManillar; }
 
     void mostrarInfo() const override {
-        cout << "[MOTOCICLETA] ";
+        cout << "Motocicleta"<<endl;
         Vehiculo::mostrarInfo();
-        cout << " | Cilindrada: " << cilindrada << " cc | Manillar: " << tipoManillar << endl;
+        cout<< "Cilindrada: " << cilindrada <<endl
+        cout<<"Manillar: " << tipoManillar << endl;
     }
 };
 
@@ -77,31 +77,27 @@ public:
     int getNumEjes() const { return numEjes; }
 
     void mostrarInfo() const override {
-        cout << "[CAMIÓN] ";
+        cout << "Camion ";
         Vehiculo::mostrarInfo();
-        cout << " | Carga: " << capacidadCarga << " t | Ejes: " << numEjes << endl;
+        cout << "Carga: " << capacidadCarga <<endl
+        cout<<"Ejes: " << numEjes << endl;
     }
 };
 
 int main() {
-   
     vector garaje;
-
     garaje.push_back(new Coche("Toyota", "Corolla", 2022, 4, "Nafta"));
     garaje.push_back(new Motocicleta("Yamaha", "MT-07", 2023, 689, "Deportivo"));
     garaje.push_back(new Camion("Mercedes-Benz", "Actros", 2021, 18.5, 3));
 
-    cout << "--- LISTADO DE VEHÍCULOS EN EL GARAJE ---\n\n";
-
+    cout << "Listado de vehiculos"<<endl;
     for (const auto& vehiculo : garaje) {
         vehiculo->mostrarInfo();
     }
 
-    
     for (auto vehiculo : garaje) {
         delete vehiculo;
     }
     garaje.clear();
-
     return 0;
 }
