@@ -32,7 +32,7 @@ public:
     
     void agregarEmpleado(const Empleado& emp) {
         empleados.push_back(emp);
-        cout << "Empleado '" << emp.getNombre() << "' registrado correctamente.\n";
+        cout << "Empleado '" << emp.getNombre() << "' registrado correctamente."<<endl;
     }
 
    
@@ -60,7 +60,7 @@ public:
 
     
     void listarPorDepartamento(const string& depto) const {
-        cout << "\n--- EMPLEADOS DEL DEPARTAMENTO DE '" << depto << "' ---\n";
+        cout << "Empleados del departamento de '" << depto <<endl;
         bool encontrado = false;
         for (const auto& emp : empleados) {
             if (emp.getDepartamento() == depto) {
@@ -70,22 +70,19 @@ public:
         }
 
         if (!encontrado) {
-            cout << "No se encontraron empleados en el departamento de " << depto << ".\n";
+            cout << "No se encontraron empleados en el departamento de " << depto <<endl;
         }
-        cout << "-----------------------------------------------------\n";
     }
 
-    // Mostrar todo el personal
     void mostrarTodos() const {
         if (empleados.empty()) {
-            cout << "No hay empleados registrados en la empresa.\n";
+            cout << "No hay empleados registrados en la empresa."<<endl;
             return;
         }
-        cout << "\n--- LISTA GENERAL DE EMPLEADOS ---\n";
+        cout << "lista de empleados";
         for (const auto& emp : empleados) {
             emp.mostrarInfo();
         }
-        cout << "----------------------------------\n";
     }
 };
 
@@ -93,19 +90,18 @@ int main() {
     Empresa miEmpresa;
 
     
-    miEmpresa.agregarEmpleado(Empleado("Ana Gómez", 450000.0, "Sistemas"));
-    miEmpresa.agregarEmpleado(Empleado("Carlos Pérez", 380000.0, "Recursos Humanos"));
-    miEmpresa.agregarEmpleado(Empleado("Lucía Fernández", 520000.0, "Sistemas"));
-    miEmpresa.agregarEmpleado(Empleado("Martín Silva", 410000.0, "Ventas"));
-
+    miEmpresa.agregarEmpleado(Empleado("Maximo Bianco", 500000.0, "Sistemas"));
+    miEmpresa.agregarEmpleado(Empleado("Joaquin Cejas Molina", 380000.0, "Sistemas"));
+    miEmpresa.agregarEmpleado(Empleado("Augusto Arjona", 450000.0, "Ventas"));
+    miEmpresa.agregarEmpleado(Empleado("Gonzalo Fonseca", 410000.0, "Recursos Humanos"));
   
     miEmpresa.mostrarTodos();
 
-    cout << "\nNómina total de la empresa: $" << miEmpresa.calcularNominaTotal() << endl;
+    cout << "Nómina total de la empresa: $" << miEmpresa.calcularNominaTotal() << endl;
 
     const Empleado* mejorPagado = miEmpresa.encontrarMayorSalario();
     if (mejorPagado != nullptr) {
-        cout << "\n--- EMPLEADO CON MAYOR SALARIO ---\n";
+        cout << "Empleado con mejor salario";
         mejorPagado->mostrarInfo();
     }
 
