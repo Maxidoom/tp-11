@@ -121,13 +121,10 @@ int main() {
     figuras.push_back(new Rectangulo("Azul", 2.5, -1.0, 4.0, 6.0));
     figuras.push_back(new Triangulo("Verde", -3.0, 4.0, 3.0, 4.0, 5.0));
 
-    cout << "--- FIGURAS GEOMÉTRICAS ---\n\n";
-
+    cout << "Figuras geometricas"<<endl;
     for (const auto& figura : figuras) {
         figura->mostrarInfo();
     }
-
-    
     for (auto figura : figuras) {
         delete figura;
     }
