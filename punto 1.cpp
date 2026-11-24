@@ -3,7 +3,6 @@
 #include <vector>
 #include <string.h>
 using namespace std;
-
 class Libro {
 private:
     string titulo;
@@ -29,18 +28,18 @@ private:
 public:
     void agregarLibro(const Libro& libro) {
         libros.push_back(libro);
-        cout << "Libro '" << libro.getTitulo() << "' agregado correctamente.\n";
+        cout << "Libro '" << libro.getTitulo() << "' agregado correctamente."<<endl;
     }
 
     bool eliminarLibro(const string& titulo) {
         for (auto it = libros.begin(); it != libros.end(); ++it) {
             if (it->getTitulo() == titulo) {
                 libros.erase(it);
-                cout << "Libro '" << titulo << "' eliminado correctamente.\n";
+                cout << "Libro '" << titulo << "' eliminado correctamente."<<endl;
                 return true;
             }
         }
-        cout << "No se encontró el libro '" << titulo << "' para eliminar.\n";
+        cout << "No se encontró el libro '" << titulo << "' para eliminar."<<endl;
         return false;
     }
 
@@ -63,39 +62,36 @@ public:
 
     void mostrarCatalogo() const {
         if (libros.empty()) {
-            cout << "La biblioteca esta vacia.\n";
+            cout << "La biblioteca esta vacia."<<endl;
             return;
         }
-        cout << "\n--- CATALOGO DE LA BIBLIOTECA ---\n";
+        cout << "Catalogo de biblioteca"<<endl;
         for (const auto& libro : libros) {
             libro.mostrarInfo();
         }
-        cout << "--------------------------------\n";
     }
 };
-
 int main() {
     Biblioteca miBiblioteca;
 
-    miBiblioteca.agregarLibro(Libro("Cien años de soledad", "Gabriel Garcia Marquez", 471));
-    miBiblioteca.agregarLibro(Libro("Don Quijote de la Mancha", "Miguel de Cervantes", 863));
-    miBiblioteca.agregarLibro(Libro("El Aleph", "Jorge Luis Borges", 146));
-
+    miBiblioteca.agregarLibro(Libro("El Nombre del Viento", "Patrick Rothfuss", 880));
+    miBiblioteca.agregarLibro(Libro("Kiki Entregas a Domicilio", "Eiko Kadono", 193));
+    miBiblioteca.agregarLibro(Libro("El Temor de un Hombre Sabio", "Patrick Rothfuss", 1200));
     miBiblioteca.mostrarCatalogo();
 
-    cout << "\nTotal de paginas en la biblioteca: " << miBiblioteca.calcularTotalPaginas() << endl;
+    cout << "Total de paginas en la biblioteca: " << miBiblioteca.calcularTotalPaginas() << endl;
 
-    cout << "\n--- BUSCAR LIBRO ---\n";
+    cout << "Buscar Libro"<<endl;
     string tituloBuscar = "El Aleph";
     const Libro* hallado = miBiblioteca.buscarLibro(tituloBuscar);
     if (hallado != nullptr) {
-        cout << "¡Libro encontrado! ";
+        cout << "Libro encontrado";
         hallado->mostrarInfo();
     } else {
-        cout << "El libro '" << tituloBuscar << "' no esta en la biblioteca.\n";
+        cout << "El libro '" << tituloBuscar << "' no esta en la biblioteca."<<endl;
     }
 
-    cout << "\n--- ELIMINAR LIBRO ---\n";
+    cout << "eliminar libro"<<endl;
     miBiblioteca.eliminarLibro("Cien años de soledad");
 
     miBiblioteca.mostrarCatalogo();
